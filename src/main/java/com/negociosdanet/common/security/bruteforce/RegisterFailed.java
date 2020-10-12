@@ -1,4 +1,4 @@
-package com.negociosdanet.common.security.brute_force;
+package com.negociosdanet.common.security.bruteforce;
 
 import java.io.Serializable;
 

@@ -17,8 +17,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.negociosdanet.common.domain.response.UserAuthenticate;
 import com.negociosdanet.common.service.TokenService;
-import com.negociosdanet.service_client.UserClient;
-import com.negociosdanet.service_client.response.UserDetails;
+import com.negociosdanet.serviceclient.UserClient;
+import com.negociosdanet.serviceclient.response.UserDetails;
 
 @Component
 public class AuthenticationFilter extends OncePerRequestFilter {

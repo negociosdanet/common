@@ -6,20 +6,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.negociosdanet.common.security.brute_force.BruteForceFilter;
+import com.negociosdanet.common.security.bruteforce.BruteForceFilter;
 
 @Configuration
 @ComponentScan("com.negociosdanet.common")
 public class CommonConfig {
 	
-	@Value("${auth.security.brute_force.timeRequest}")
+	@Value("${auth.security.bruteforce.timeRequest}")
 	private long timeRequest;
 	
-	@Value("${auth.security.brute_force.numberAttempt}")
+	@Value("${auth.security.bruteforce.numberAttempt}")
 	private int numberAttempt;
 	
 	@Bean
-	public FilterRegistrationBean<BruteForceFilter> someFilterRegistration(BruteForceFilter filterBrute) {
+	public FilterRegistrationBean<BruteForceFilter> bruteForceFilter(BruteForceFilter filterBrute) {
 	    FilterRegistrationBean<BruteForceFilter> registration = new FilterRegistrationBean<>();
 	    registration.setFilter(filterBrute);
 	    registration.addUrlPatterns("/login");
