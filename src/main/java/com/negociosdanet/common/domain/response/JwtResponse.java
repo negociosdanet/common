@@ -8,5 +8,5 @@ import lombok.Data;
 public class JwtResponse implements Serializable {
 
 	private static final long serialVersionUID = 6980900658259709838L;
-	private final String jwtToken;
+	private final String token;
 }

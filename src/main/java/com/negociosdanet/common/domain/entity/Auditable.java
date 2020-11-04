@@ -18,18 +18,20 @@ import lombok.Setter;
 @Setter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class Auditable {
+public abstract class Auditable {
 
 	@CreatedBy
-    private String createdBy;
+	private String createdBy;
 
-    @CreatedDate
-    private Date createdDate;
+	@CreatedDate
+	private Date createdDate;
 
-    @LastModifiedBy
-    private String lastModifiedBy;
+	@LastModifiedBy
+	private String lastModifiedBy;
 
-    @LastModifiedDate
-    private Date lastModifiedDate;
+	@LastModifiedDate
+	private Date lastModifiedDate;
+
+	public abstract Long getUniqueId();
 
 }
