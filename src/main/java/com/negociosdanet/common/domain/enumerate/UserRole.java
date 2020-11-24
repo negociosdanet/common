@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 public enum UserRole {
-	ADMIN("Admin"), SHOP_OWNER("ShopOwner"), CUSTOMER("Customer");
+	ADMIN("Admin"), SHOP_OWNER("ShopOwner"), CUSTOMER("Customer"), SYSTEM_MANAGER("SystemManager");
 
 	private String role;
 	private SimpleGrantedAuthority authority;
