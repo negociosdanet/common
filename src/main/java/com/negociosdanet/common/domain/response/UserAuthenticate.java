@@ -12,7 +12,6 @@ public class UserAuthenticate {
 	private Long id;
 	private String name;
 	private String email;
-	private RoleResponse role;
 	private PlanResponse plan;
 	private Collection<? extends GrantedAuthority> authoritys;
 

@@ -80,7 +80,7 @@ public class ApiExceptionHandle extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(CredentialsException.class)
 	public ResponseEntity<Object> handleCredentialsNotFoundException(CredentialsException ex, WebRequest request) {
-		HttpStatus status = HttpStatus.BAD_REQUEST;
+		HttpStatus status = HttpStatus.UNAUTHORIZED;
 		Wrapper wrapper = createAlternativeWrapper(ex.getMessage(), status.value(), null, request);
 		return this.handleExceptionInternal(ex, wrapper, new HttpHeaders(), status, request);
 	}

@@ -44,7 +44,8 @@ public class TokenService {
 
 		Map<String, Object> claims = new HashMap<>();
 		claims.put(USER_AUTHENTICATE, userAuthenticate);
-		claims.put(UserRole.ADMIN.name(), true);
+		
+		userAuthenticate.setAuthoritys(Collections.singletonList(UserRole.ADMIN.getAuthority()));
 
 		return Jwts.builder().setClaims(claims).setIssuedAt(now).setId(jti)
 				.setExpiration(getExpirationDate(now)).signWith(SignatureAlgorithm.HS256, secret).compact();
@@ -65,7 +66,7 @@ public class TokenService {
 
 	public UserAuthenticate getUserToken(String token) {
 		if (token != null) {
-			token = token.substring(7, token.length());
+			token = token.substring(BEARER.length(), token.length());
 		}
 		Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
 		return JsonUtils.convertValue(claims.get(USER_AUTHENTICATE), UserAuthenticate.class);
@@ -92,7 +93,7 @@ public class TokenService {
 			Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
 			UserAuthenticate authenticate = JsonUtils.convertValue(claims.get(USER_AUTHENTICATE), UserAuthenticate.class);
 			
-			return new UsernamePasswordAuthenticationToken(authenticate.getName(), null, getAuthorities(claims));
+			return new UsernamePasswordAuthenticationToken(authenticate.getName(), null, authenticate.getAuthoritys());
 		}
 		
 		return null;
